@@ -1,11 +1,12 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="input" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:swf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="input" this:input.linksArg="[{}]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:swf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_configDT" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="linksArg" Type="InArgument(s:String[])" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1095.2,1340</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1183.2,1453.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>input_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -46,7 +47,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="21">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="42">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -68,65 +69,72 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="input" sap:VirtualizedContainerService.HintSize="508,1175.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="input" sap:VirtualizedContainerService.HintSize="508,1288.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="s:String[]" Name="countries">
-        <Variable.Default>
-          <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{}" />
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="swf:Button" Name="button" />
       <Variable x:TypeArguments="swf:CheckedListBox" Name="checkbox" />
+      <Variable x:TypeArguments="swf:Button" Name="button" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="466.4,1082.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+    <Sequence DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="466.4,1196" sap2010:WorkflowViewState.IdRef="Sequence_6">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Int32" Name="index" />
+        <Variable x:TypeArguments="x:String" Name="variable1" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ForEachRow CurrentIndex="[index]" DataTable="[in_configDT]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="424.8,455.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow CurrentIndex="[index]" DataTable="[in_configDT]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="424.8,436" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
         <ui:ForEachRow.Body>
           <ActivityAction x:TypeArguments="sd:DataRow">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="375.2,306.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="375.2,287.2" sap2010:WorkflowViewState.IdRef="Sequence_8">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:Comment sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Am hardcodat. Am pus row(0) pentru a luat primul element de pe fiecare linie. &#xD;&#xA;Index nu se opreste. Cred ca 0 vine de la coloana." />
+              <ui:Comment sap:VirtualizedContainerService.HintSize="333.6,94.4" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//Am pus row(0) pentru a luat primul element de pe fiecare linie. &#xA;Index nu se opreste. " />
               <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_5">
                 <Assign.To>
-                  <OutArgument x:TypeArguments="s:String[]">[countries]</OutArgument>
+                  <OutArgument x:TypeArguments="s:String[]">[linksArg]</OutArgument>
                 </Assign.To>
                 <Assign.Value>
-                  <InArgument x:TypeArguments="s:String[]">[countries.Concat({row(0).ToString}).ToArray]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]">[linksArg.Concat({row(0).ToString}).ToArray]</InArgument>
                 </Assign.Value>
               </Assign>
             </Sequence>
           </ActivityAction>
         </ui:ForEachRow.Body>
       </ui:ForEachRow>
-      <ui:InvokeCode ContinueOnError="{x:Null}" Code="           &#xD;&#xA;      Dim form As New System.Windows.forms.form &#xD;&#xA;   Dim  btnOK As New System.Windows.Forms.Button()&#xD;&#xA;   checkedListBox1 = New System.Windows.Forms.CheckedListBox()&#xD;&#xA;   &#xD;&#xA;            btnOK.Location = New System.Drawing.Point(48, 227)&#xD;&#xA;   AddHandler btnOK.Click, Sub(sender As Object,e As EventArgs) form.Close() &#xD;&#xA;            btnOK.Name = &quot;btnOK&quot;&#xD;&#xA;            btnOK.Size = New System.Drawing.Size(111, 23)&#xD;&#xA;            btnOK.TabIndex = 1&#xD;&#xA;            btnOK.Width=200&#xD;&#xA;            btnOK.Text = &quot;Finalizado&quot;&#xD;&#xA;   &#xD;&#xA;    &#xD;&#xA;            checkedListBox1.FormattingEnabled = True&#xD;&#xA;            checkedListBox1.Location = New System.Drawing.Point(48, 61)&#xD;&#xA;            checkedListBox1.Name = &quot;chkSelectOptions&quot;&#xD;&#xA;            checkedListBox1.Items.AddRange(countries)&#xD;&#xA;            checkedListBox1.Size = New System.Drawing.Size(138, 109)&#xD;&#xA;            checkedListBox1.TabIndex = 0&#xD;&#xA;        &#xD;&#xA;&#xD;&#xA;   form.BackColor = System.Drawing.SystemColors.Window&#xD;&#xA;            form.AcceptButton = btnOK&#xD;&#xA;            form.Text=&quot;Select Countries&quot;&#xD;&#xA;            form.TopMost = True&#xD;&#xA;            form.AutoSize = False&#xD;&#xA;            form.AutoScaleDimensions = New System.Drawing.SizeF(6F, 13F)&#xD;&#xA;            form.Font = New System.Drawing.Font(&quot;Times New Roman&quot;, 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)&#xD;&#xA;            form.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font&#xD;&#xA;            form.ClientSize = New System.Drawing.Size(300, 300)&#xD;&#xA;            form.Controls.Add(checkedListBox1)&#xD;&#xA;            form.Controls.Add(btnOK)&#xD;&#xA;            form.Name = &quot;Form1&quot;&#xD;&#xA;            form.ShowDialog()&#xD;&#xA;   &#xD;&#xA;&#xD;&#xA;   &#xD;&#xA;" DisplayName="Open Form" sap:VirtualizedContainerService.HintSize="424.8,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_6">
+      <ui:InvokeCode ContinueOnError="{x:Null}" Code="           &#xD;&#xA;      Dim form As New System.Windows.forms.form &#xD;&#xA;   Dim  btnOK As New System.Windows.Forms.Button()&#xD;&#xA;   checkedListBox1 = New System.Windows.Forms.CheckedListBox()&#xD;&#xA;   &#xD;&#xA;            btnOK.Location = New System.Drawing.Point(48, 227)&#xD;&#xA;   AddHandler btnOK.Click, Sub(sender As Object,e As EventArgs) form.Close() &#xD;&#xA;            btnOK.Name = &quot;btnOK&quot;&#xD;&#xA;            btnOK.Size = New System.Drawing.Size(111, 23)&#xD;&#xA;            btnOK.TabIndex = 1&#xD;&#xA;            btnOK.Width=200&#xD;&#xA;            btnOK.Text = &quot;Finish&quot;&#xD;&#xA;   &#xD;&#xA;    &#xD;&#xA;            checkedListBox1.FormattingEnabled = True&#xD;&#xA;            checkedListBox1.Location = New System.Drawing.Point(48, 61)&#xD;&#xA;            checkedListBox1.Name = &quot;chkSelectOptions&quot;&#xD;&#xA;            checkedListBox1.Items.AddRange(links)&#xD;&#xA;            checkedListBox1.Size = New System.Drawing.Size(138, 109)&#xD;&#xA;            checkedListBox1.TabIndex = 0&#xD;&#xA;        &#xD;&#xA;&#xD;&#xA;   form.BackColor = System.Drawing.SystemColors.Window&#xD;&#xA;            form.AcceptButton = btnOK&#xD;&#xA;            form.Text=&quot;Select platforms&quot;&#xD;&#xA;            form.TopMost = True&#xD;&#xA;            form.AutoSize = False&#xD;&#xA;            form.AutoScaleDimensions = New System.Drawing.SizeF(6F, 13F)&#xD;&#xA;            form.Font = New System.Drawing.Font(&quot;Times New Roman&quot;, 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)&#xD;&#xA;            form.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font&#xD;&#xA;            form.ClientSize = New System.Drawing.Size(300, 300)&#xD;&#xA;            form.Controls.Add(checkedListBox1)&#xD;&#xA;            form.Controls.Add(btnOK)&#xD;&#xA;            form.Name = &quot;Form1&quot;&#xD;&#xA;            form.ShowDialog()&#xD;&#xA;   &#xD;&#xA;&#xD;&#xA;   &#xD;&#xA;" DisplayName="Open Form" sap:VirtualizedContainerService.HintSize="424.8,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_6">
         <ui:InvokeCode.Arguments>
-          <OutArgument x:TypeArguments="swf:CheckedListBox" x:Key="checkedListBox1">[checkbox]</OutArgument>
+          <OutArgument x:TypeArguments="swf:CheckedListBox" x:Key="checkedListBox1">
+            <mva:VisualBasicReference x:TypeArguments="swf:CheckedListBox" ExpressionText="checkbox" />
+          </OutArgument>
           <InArgument x:TypeArguments="sd1:SizeF" x:Key="AutoScaleDimensions" />
           <InArgument x:TypeArguments="swf:AutoScaleMode" x:Key="AutoScaleMode" />
           <InArgument x:TypeArguments="sd1:Size" x:Key="ClientSize" />
           <InArgument x:TypeArguments="swf:Control" x:Key="Controls" />
-          <InArgument x:TypeArguments="s:String[]" x:Key="countries">[countries]</InArgument>
+          <InArgument x:TypeArguments="s:String[]" x:Key="links">
+            <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="linksArg" />
+          </InArgument>
         </ui:InvokeCode.Arguments>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -152,6 +160,7 @@
           </ActivityAction>
         </ui:ForEach.Body>
       </ui:ForEach>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="424.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Checked items finished&quot;]" />
     </Sequence>
   </Sequence>
 </Activity>
