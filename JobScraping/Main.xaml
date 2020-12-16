@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1118.4,1240</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1107.2,1425.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -73,7 +73,7 @@
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Sequence 'Main'" sap:VirtualizedContainerService.HintSize="508,1075.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Sequence 'Main'" sap:VirtualizedContainerService.HintSize="508,1260.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="configDT" />
       <Variable x:TypeArguments="x:String" Name="jobName" />
@@ -116,52 +116,41 @@
         </InArgument>
       </ui:OpenBrowser.Url>
     </ui:OpenBrowser>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SearchOnEjobs workflow" sap:VirtualizedContainerService.HintSize="466.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="SearchOnLinkedin.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SearchOnEjobs workflow" sap:VirtualizedContainerService.HintSize="466.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="SearchOnEjobs.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_jobName">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="jobName" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_jobExperience">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="jobExperience" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_jobLocation">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="jobLocation" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_url">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="configDT.Rows(1)(0).ToString()" />
-        </InArgument>
-        <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">
-          <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="out_browser" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_jobName">[jobName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_jobExperience">[jobExperience]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_jobLocation">[jobLocation]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_url">[configDT.Rows(0)(0).ToString()]</InArgument>
+        <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">[out_browser]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="466.4,284.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SearchOnLinkedin workflow" sap:VirtualizedContainerService.HintSize="466.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="SearchOnLinkedin.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_jobName">[jobName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_jobExperience">[jobExperience]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_jobLocation">[jobLocation]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_url">[configDT.Rows(1)(0).ToString()]</InArgument>
+        <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">[out_browser]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SearchOnBestJobs workflow" sap:VirtualizedContainerService.HintSize="466.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="SearchOnBestJobs.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_jobName">[jobName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_jobExperience">[jobExperience]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_jobLocation">[jobLocation]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_url">[configDT.Rows(2)(0).ToString()]</InArgument>
+        <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">[out_browser]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="466.4,163.2" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,206.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="200,84.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SearchOnEjobs workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="SearchOnEjobs.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_jobName">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="jobName" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_jobExperience">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="jobExperience" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_jobLocation">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="jobLocation" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_url">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="configDT.Rows(0)(0).ToString()" />
-              </InArgument>
-              <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">
-                <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="out_browser" />
-              </InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
         </Sequence>
       </ui:CommentOut.Body>
     </ui:CommentOut>
