@@ -1,14 +1,15 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="out_browser" Type="OutArgument(ui:Browser)" />
+    <x:Property Name="in_out_newJobs" Type="InOutArgument(sd:DataTable[])" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1107.2,1425.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1111.2,2112</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="30">
+    <scg:List x:TypeArguments="x:String" Capacity="60">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -39,10 +40,13 @@
       <x:String>System.Runtime.InteropServices</x:String>
       <x:String>System.Windows.Forms</x:String>
       <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="56">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -71,9 +75,11 @@
       <AssemblyReference>System.Windows.Forms</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Sequence 'Main'" sap:VirtualizedContainerService.HintSize="508,1260.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Sequence 'Main'" sap:VirtualizedContainerService.HintSize="508,1947.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="configDT" />
       <Variable x:TypeArguments="x:String" Name="jobName" />
@@ -123,6 +129,7 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_jobLocation">[jobLocation]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_url">[configDT.Rows(0)(0).ToString()]</InArgument>
         <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">[out_browser]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_EjobsPath">[configDT.Rows(0)(1).ToString()]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SearchOnLinkedin workflow" sap:VirtualizedContainerService.HintSize="466.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="SearchOnLinkedin.xaml">
@@ -130,8 +137,9 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_jobName">[jobName]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_jobExperience">[jobExperience]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_jobLocation">[jobLocation]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_url">[configDT.Rows(1)(0).ToString()]</InArgument>
         <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">[out_browser]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_url">[configDT.Rows(1)(0).ToString()]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_LinkedinPath">[configDT.Rows(1)(1).ToString()]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SearchOnBestJobs workflow" sap:VirtualizedContainerService.HintSize="466.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="SearchOnBestJobs.xaml">
@@ -141,16 +149,51 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_jobLocation">[jobLocation]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_url">[configDT.Rows(2)(0).ToString()]</InArgument>
         <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">[out_browser]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_BestJobsPath">[configDT.Rows(2)(1).ToString()]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="466.4,163.2" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ProcessJobs workflow" sap:VirtualizedContainerService.HintSize="466.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="ProcessJobs.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_EJobsPath">[configDT.Rows(0)(1).ToString()]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_LinkedinPath">[configDT.Rows(1)(1).ToString()]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_BestJobsPath">[configDT.Rows(2)(1).ToString()]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_AllJobsPath">[configDT.Rows(3)(1).ToString()]</InArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable[]" x:Key="in_out_newJobsDTArray">[in_out_newJobs]</InOutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="466.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Trimitere mail&quot;]" />
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SendMail workflow" sap:VirtualizedContainerService.HintSize="466.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="SendMail.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable[]" x:Key="in_AttachArrayDT">
+          <mva:VisualBasicValue x:TypeArguments="sd:DataTable[]" ExpressionText="in_out_newJobs" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_AttachFileName">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="configDT.Rows(4)(1).ToString()" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CleanProject workflow" sap:VirtualizedContainerService.HintSize="466.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="CleanProject.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="s:String[]" x:Key="FilePaths">
+          <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{configDT.Rows(0)(1).ToString(), configDT.Rows(1)(1).ToString(), configDT.Rows(2)(1).ToString(), configDT.Rows(4)(1).ToString()}" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="466.4,256" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="200,84.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence sap:VirtualizedContainerService.HintSize="241.6,177.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="200,84.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
         </Sequence>
       </ui:CommentOut.Body>
     </ui:CommentOut>
