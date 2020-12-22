@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1111.2,2112</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1112,2843.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="60">
@@ -79,28 +79,74 @@
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Sequence 'Main'" sap:VirtualizedContainerService.HintSize="508,1947.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Sequence 'Main'" sap:VirtualizedContainerService.HintSize="508,2678.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="configDT" />
       <Variable x:TypeArguments="x:String" Name="jobName" />
       <Variable x:TypeArguments="x:String" Name="jobLocation" />
-      <Variable x:TypeArguments="x:String" Name="jobExperience" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadConfig workflow" sap:VirtualizedContainerService.HintSize="466.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ReadConfig.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_configDT">[configDT]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_jobName">[jobName]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_jobLocation">[jobLocation]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_jobExperience">[jobExperience]</OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="466.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;jobName: &quot; + jobName +  Environment.NewLine + &quot;Location: &quot; + jobLocation +  Environment.NewLine + &quot;Experience: &quot; + jobExperience.ToString()]" />
-    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="466.4,217.6" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[out_browser]">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="466.4,601.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence sap:VirtualizedContainerService.HintSize="375.2,370.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Citim configuratia din fisier + datele de la tastatura" DisplayName="Invoke ReadConfig workflow" sap:VirtualizedContainerService.HintSize="333.6,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ReadConfig.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_configDT">
+                <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="configDT" />
+              </OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_jobName">
+                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="jobName" />
+              </OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_jobLocation">
+                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="jobLocation" />
+              </OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;jobName: &quot; + jobName +  Environment.NewLine + &quot;Location: &quot; + jobLocation +  Environment.NewLine]" />
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Fatal" Message="[&quot;Eroare la input. Nu se poate continua&quot;]" />
+              <TerminateWorkflow DisplayName="Terminate Workflow" Exception="[exception]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" sap2010:Annotation.AnnotationText="Deschidem browserul pentru a cauta job-uri pe site-uri. O facem aici pentru a nu deschide un nou browser pentru fiecare site in parte. " BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="466.4,261.6" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[out_browser]">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -121,37 +167,134 @@
           <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
       </ui:OpenBrowser.Url>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:OpenBrowser>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SearchOnEjobs workflow" sap:VirtualizedContainerService.HintSize="466.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="SearchOnEjobs.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_jobName">[jobName]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_jobExperience">[jobExperience]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_jobLocation">[jobLocation]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_url">[configDT.Rows(0)(0).ToString()]</InArgument>
-        <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">[out_browser]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_EjobsPath">[configDT.Rows(0)(1).ToString()]</InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SearchOnLinkedin workflow" sap:VirtualizedContainerService.HintSize="466.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="SearchOnLinkedin.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_jobName">[jobName]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_jobExperience">[jobExperience]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_jobLocation">[jobLocation]</InArgument>
-        <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">[out_browser]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_url">[configDT.Rows(1)(0).ToString()]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_LinkedinPath">[configDT.Rows(1)(1).ToString()]</InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SearchOnBestJobs workflow" sap:VirtualizedContainerService.HintSize="466.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="SearchOnBestJobs.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_jobName">[jobName]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_jobExperience">[jobExperience]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_jobLocation">[jobLocation]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_url">[configDT.Rows(2)(0).ToString()]</InArgument>
-        <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">[out_browser]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_BestJobsPath">[configDT.Rows(2)(1).ToString()]</InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="466.4,328" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+      <TryCatch.Try>
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Cautam joburi pe Ejobs" DisplayName="Invoke SearchOnEjobs workflow" sap:VirtualizedContainerService.HintSize="333.6,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="SearchOnEjobs.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_jobName">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="jobName" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_jobLocation">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="jobLocation" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_url">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="configDT.Rows(0)(0).ToString()" />
+            </InArgument>
+            <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">
+              <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="out_browser" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_EjobsPath">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="configDT.Rows(0)(1).ToString()" />
+            </InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeWorkflowFile>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,163.2" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[&quot;Preluarea job-urilor de pe eJobs a esuat. &quot; + exception.Message]" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="466.4,328" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+      <TryCatch.Try>
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SearchOnLinkedin workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="SearchOnLinkedin.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_jobName">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="jobName" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_jobLocation">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="jobLocation" />
+            </InArgument>
+            <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">
+              <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="out_browser" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_url">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="configDT.Rows(1)(0).ToString()" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_LinkedinPath">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="configDT.Rows(1)(1).ToString()" />
+            </InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,163.2" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Error" Message="[&quot;Eroare la preluarea job-urilor de pe Linkedin. &quot; + exception.Message]" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="466.4,328" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+      <TryCatch.Try>
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SearchOnBestJobs workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="SearchOnBestJobs.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_jobName">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="jobName" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_jobLocation">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="jobLocation" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_url">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="configDT.Rows(2)(0).ToString()" />
+            </InArgument>
+            <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">
+              <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="out_browser" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_BestJobsPath">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="configDT.Rows(2)(1).ToString()" />
+            </InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,163.2" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Error" Message="[&quot;Eroare la preluarea job-urilor de pe BestJobs. &quot; + exception.Message]" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ProcessJobs workflow" sap:VirtualizedContainerService.HintSize="466.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="ProcessJobs.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_EJobsPath">[configDT.Rows(0)(1).ToString()]</InArgument>
@@ -161,41 +304,41 @@
         <InOutArgument x:TypeArguments="sd:DataTable[]" x:Key="in_out_newJobsDTArray">[in_out_newJobs]</InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="466.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Trimitere mail&quot;]" />
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SendMail workflow" sap:VirtualizedContainerService.HintSize="466.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="SendMail.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable[]" x:Key="in_AttachArrayDT">
-          <mva:VisualBasicValue x:TypeArguments="sd:DataTable[]" ExpressionText="in_out_newJobs" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_AttachFileName">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="configDT.Rows(4)(1).ToString()" />
-        </InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CleanProject workflow" sap:VirtualizedContainerService.HintSize="466.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="CleanProject.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="s:String[]" x:Key="FilePaths">
-          <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{configDT.Rows(0)(1).ToString(), configDT.Rows(1)(1).ToString(), configDT.Rows(2)(1).ToString(), configDT.Rows(4)(1).ToString()}" />
-        </InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="466.4,256" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-      <ui:CommentOut.Body>
-        <Sequence sap:VirtualizedContainerService.HintSize="241.6,177.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="466.4,187.2" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+      <TryCatch.Try>
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SendMail workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="SendMail.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="sd:DataTable[]" x:Key="in_AttachArrayDT">[in_out_newJobs]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_AttachFileName">[configDT.Rows(4)(1).ToString()]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="200,84.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </Sequence>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Email: &quot; + exception.Message]" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Facem curat!&#xA;Se sterg fisiere inutile pentru rularile viitoare." DisplayName="Invoke CleanProject workflow" sap:VirtualizedContainerService.HintSize="466.4,157.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="CleanProject.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="s:String[]" x:Key="FilePaths">[{configDT.Rows(0)(1).ToString(), configDT.Rows(1)(1).ToString(), configDT.Rows(2)(1).ToString(), configDT.Rows(4)(1).ToString()}]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
   </Sequence>
 </Activity>
