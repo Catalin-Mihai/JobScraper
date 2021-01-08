@@ -11,5 +11,8 @@ Obs:
 
 4. abcd & xyz => Ne asteptam la configuratie noua + trimitere mail cu toate joburile (probabil job-uri irelevante sau neexistente)
 
-5. 5. aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa & aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (30 caractere)
+5. aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa & aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (30 caractere)
 => Ne asteptam la configuratie noua + trimitere mail cu toate joburile (probabil job-uri irelevante sau neexistente)
+
+6. 1!#$%&("{}:(&^%  &  1!#$%&("{}:(&^% => Am testam caractere interzise pentru site-urile de cautare.		 
+	Ne asteptam la configuratie noua + trimitere mail cu toate joburile (probabil job-uri irelevante sau neexistente)
