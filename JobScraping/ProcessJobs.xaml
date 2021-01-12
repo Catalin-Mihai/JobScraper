@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1112,998.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1113.6,998.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessJobs_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -99,24 +99,21 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">80,683.6</av:Point>
-          <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+          <av:Size x:Key="ShapeSize">200,84</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <If Condition="[FileExists(3) = False]" sap:VirtualizedContainerService.HintSize="1895.2,2235.2" sap2010:WorkflowViewState.IdRef="If_1">
+      <If sap2010:Annotation.AnnotationText="Daca nu exista fisierul allJobs" Condition="[FileExists(3) = False]" sap:VirtualizedContainerService.HintSize="1895.2,2266.4" sap2010:WorkflowViewState.IdRef="If_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
           <Sequence sap:VirtualizedContainerService.HintSize="752.8,1613.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Int32" Name="index" />
-              <Variable x:TypeArguments="x:Boolean" Name="AllJobsCreated">
-                <Variable.Default>
-                  <Literal x:TypeArguments="x:Boolean" />
-                </Variable.Default>
-              </Variable>
+              <Variable x:TypeArguments="x:Boolean" Default="False" Name="AllJobsCreated" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
