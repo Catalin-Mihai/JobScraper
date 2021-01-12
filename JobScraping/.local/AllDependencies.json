@@ -3540,9 +3540,9 @@
     "restore": {
       "projectUniqueName": "JobScraping",
       "projectName": "JobScraping",
-      "projectPath": "C:\\Users\\Catalin\\Documents\\UiPath\\JobScraping\\.local",
+      "projectPath": "C:\\Users\\Catalin\\Documents\\UiPath\\JobScraping-GIT\\RPA\\JobScraping\\.local",
       "packagesPath": "C:\\Users\\Catalin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Catalin\\Documents\\UiPath\\JobScraping\\.local"
+      "outputPath": "C:\\Users\\Catalin\\Documents\\UiPath\\JobScraping-GIT\\RPA\\JobScraping\\.local"
     },
     "frameworks": {
       "net461": {
